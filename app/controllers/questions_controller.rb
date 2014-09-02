@@ -14,7 +14,11 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if @question.save
       flash[:notice] = "Question created."
-      redirect_to questions_path
+      # redirect_to questions_path
+      respond_to do |format|
+        format.html { redirect_to questions_path }
+        format.js
+      end
     else
       render 'new'
     end
@@ -32,6 +36,13 @@ class QuestionsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def show
+    @question = Question.find(params[:id])
+    @responses = @question.responses
+    @response = Response.new
+    @vote = Vote.new
   end
 
   def destroy

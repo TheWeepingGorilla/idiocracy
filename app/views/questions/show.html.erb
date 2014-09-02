@@ -1,0 +1,17 @@
+
+<h2>Q: <%= @question.question %> </h2>
+
+<h2>A: </h2>
+<ul>
+  <% @responses.each do |response| %>
+    <li><%= "#{response.response}" %>
+        <%= response.votes.length %>
+        <%= link_to "Vote Up", question_response_votes_path(@question, response), method: :post, remote: true, class: "btn-xs btn-success", id: "voting" %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= render('response_form') %>
+<br>
+<%= link_to "Home", questions_path, :class=> "btn btn-info" %>

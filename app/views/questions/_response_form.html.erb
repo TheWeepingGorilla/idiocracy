@@ -1,0 +1,11 @@
+<%= render('layouts/errors', :object => @response) %>
+
+<%= form_for [@question, @response] do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :question_id, :value => params[:question_id] %>
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
+    <%= f.label :response %>
+    <%= f.text_field :response %>
+  </div>
+  <%= f.submit(class: "btn btn-danger") %>
+<% end %>
