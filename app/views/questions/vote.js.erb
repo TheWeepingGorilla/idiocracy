@@ -1,3 +1,6 @@
-$(doument).ready(function() {
-  $('#voting').remove();
+$(document).ready(function() {
+  $('#voting').hide().after('<%= j render("voting_form") %>');
+ // $('#voting').on("click", function(){
+ //     alert("working");
+ //   });
 });

@@ -1,0 +1,7 @@
+<%= form_for [@response] do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :response_id, :value => params[:response_id] %>
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  </div>
+  <%= f.submit(class: "btn btn-danger") %>
+<% end %>
