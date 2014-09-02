@@ -1,0 +1,13 @@
+<h1>Welcome to Idiocracy - Your Source for Questions That Shouldn't Need Answers</h1>
+<ul>
+  <% @questions.each do |question| %>
+    <br>
+    <li><%= "#{question.question}" %>
+        <%= link_to "Add Response", new_response_path(:referring_question_id => question.id) %>
+        <%= link_to "Edit",edit_question_path(question) %>
+        <%= link_to "Delete", question_path(question), :data => {:confirm => "You sure?", :method => "delete"} %>
+    </li>
+  <% end %>
+</ul>
+<br>
+<%= link_to "New Question", new_question_path, :class=> "btn btn-success" %>
